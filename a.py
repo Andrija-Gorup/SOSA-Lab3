@@ -9,9 +9,14 @@ class OperationsManager():
 
     def perform_division(self) -> float:
         """Divides a with b. If b is zero, returns NaN."""
-        if self.b == 0:
-            return float('nan')
         return self.a / self.b
+    
+    def operation_1(self) -> float:
+        """Returns the correct element from the list. If index (self.b) is out of bounds, returns NaN."""
+        l = list(range(10)) * self.a
+        if self.b > 10:
+            return float('nan')
+        return l[int(self.b)]
 
 
 def login_success():
