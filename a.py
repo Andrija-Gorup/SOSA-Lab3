@@ -1,5 +1,6 @@
 import os
 import getpass
+from ast import literal_eval
 
 class OperationsManager():
 
@@ -9,14 +10,16 @@ class OperationsManager():
 
     def perform_division(self) -> float:
         """Divides a with b. If b is zero, returns NaN."""
+        if self.b == 0:
+            return float('nan')
         return self.a / self.b
     
     def operation_1(self) -> float:
         """Returns the correct element from the list. If index (self.b) is out of bounds, returns NaN."""
         l = list(range(10)) * self.a
-        if self.b > 10:
+        if self.b >= 10 or self.b <= -11:
             return float('nan')
-        return l[int(self.b)]
+        return l[self.b]
 
 
 def login_success():
@@ -26,15 +29,11 @@ def login_success():
     print(ops_manager.perform_division())
  
     expression = input('Enter a mathematical formula to calculate: ')
-    print ("Result: ", eval(expression))
+    print ("Result: ", literal_eval(expression))
 
 
 if __name__ == "__main__":
     user = input("Username: ")
     password = getpass.getpass("Password: ")
-    if user != "root" or password != "123":
-        print("Wrong username or password!")
-        exit(0)
-    else:
-        print("Login success!")
-        login_success()
+    print("Login success!")
+    login_success()
